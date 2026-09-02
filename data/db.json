@@ -1,0 +1,110 @@
+{
+  "profiles": {
+    "default": {
+      "id": "default",
+      "startupName": "PitchPulse AI",
+      "tagline": "AI-Powered Investor Readiness & Pitch Pressure Tester",
+      "problem": "90% of early-stage founders fail pitching investors because they present unverified assumptions as facts, leading to low conversion and wasted meeting rounds.",
+      "customer": "Seed & Series-A startup founders, incubators, accelerators, and venture studios targeting US & European VC ecosystems.",
+      "solution": "An intelligent pitch coach that parses founder inputs, separates proven facts from weak assumptions, generates investor deck outlines, and simulates live VC pressure Q&A.",
+      "differentiation": "Unlike standard pitch deck templates, PitchPulse provides automated fact-vs-assumption ledgering, investor persona simulators, and real-time response traceability scoring.",
+      "businessModel": "B2B SaaS subscription ($49/month Founder tier, $199/month Accelerator tier) plus pay-per-use investor simulation practice tokens.",
+      "assumptions": "Founders will spend 20+ minutes pressure-testing pitches before investor calls; VC interview simulation predicts actual pitch success with >80% correlation."
+    },
+    "founder_sanjay": {
+      "id": "founder_sanjay",
+      "startupName": "PitchPulse AI",
+      "tagline": "AI-Powered Investor Readiness & Pitch Pressure Tester",
+      "problem": "90% of early-stage founders fail pitching investors because they present unverified assumptions as facts, leading to low conversion and wasted meeting rounds.",
+      "customer": "Seed & Series-A startup founders, incubators, accelerators, and venture studios targeting US & European VC ecosystems.",
+      "solution": "An intelligent pitch coach that parses founder inputs, separates proven facts from weak assumptions, generates investor deck outlines, and simulates live VC pressure Q&A.",
+      "differentiation": "Unlike standard pitch deck templates, PitchPulse provides automated fact-vs-assumption ledgering, investor persona simulators, and real-time response traceability scoring.",
+      "businessModel": "B2B SaaS subscription ($49/month Founder tier, $199/month Accelerator tier) plus pay-per-use investor simulation practice tokens.",
+      "assumptions": "Founders will spend 20+ minutes pressure-testing pitches before investor calls; VC interview simulation predicts actual pitch success with >80% correlation.",
+      "updatedAt": "2026-09-02T09:01:41.147Z"
+    }
+  },
+  "analyses": {
+    "founder_sanjay": {
+      "analyzedAt": "2026-09-02T09:01:41.160Z",
+      "startupName": "PitchPulse AI",
+      "stats": {
+        "totalClaims": 7,
+        "provenFacts": 4,
+        "aiSuggestions": 1,
+        "weakAssumptions": 2,
+        "readinessScore": 57
+      },
+      "entries": [
+        {
+          "id": "e1",
+          "section": "Problem",
+          "claim": "90% of early-stage founders fail pitching investors because they present unverified assumptions as facts, leading to low...",
+          "type": "fact",
+          "confidence": "High",
+          "question": "What source or primary research validates this specific problem metric?",
+          "traceability": "Known User Fact"
+        },
+        {
+          "id": "e2",
+          "section": "Customer",
+          "claim": "Target Segment: Seed & Series-A startup founders, incubators, accelerators, and venture studios targeting US & Europ",
+          "type": "fact",
+          "confidence": "Medium",
+          "question": "What is your estimated Total Addressable Market (TAM) and Serviceable Obtainable Market (SOM) for this segment?",
+          "traceability": "Known User Fact"
+        },
+        {
+          "id": "e3",
+          "section": "Solution",
+          "claim": "Core Product: An intelligent pitch coach that parses founder inputs, separates proven facts from weak assumptions, generates",
+          "type": "fact",
+          "confidence": "High",
+          "question": "What is the current build state (Prototype, MVP, Live Beta, or Revenue)?",
+          "traceability": "Known User Fact"
+        },
+        {
+          "id": "e4",
+          "section": "Growth AI Suggestion",
+          "claim": "AI Suggestion: Consider bundling an automated executive summary report generator to increase retention.",
+          "type": "ai_suggestion",
+          "confidence": "AI High",
+          "question": "Would offering self-serve analytics increase buyer expansion ARR?",
+          "traceability": "AI Recommendation"
+        },
+        {
+          "id": "e5",
+          "section": "Differentiation",
+          "claim": "Defensibility: Unlike standard pitch deck templates, PitchPulse provides automated fact-vs-assumption ledgering, investor per",
+          "type": "weak_assumption",
+          "confidence": "Low",
+          "question": "Why won't existing incumbents add this feature in their next release?",
+          "traceability": "Requires Validation"
+        },
+        {
+          "id": "e6",
+          "section": "Business Model",
+          "claim": "Monetization: B2B SaaS subscription ($49/month Founder tier, $199/month Accelerator tier) plus pay-per-use investor simulati",
+          "type": "fact",
+          "confidence": "Medium",
+          "question": "What are your target CAC (Customer Acquisition Cost) and LTV (Lifetime Value) assumptions?",
+          "traceability": "Known User Fact"
+        },
+        {
+          "id": "e7",
+          "section": "Founder Assumptions",
+          "claim": "Stated Risk: Founders will spend 20+ minutes pressure-testing pitches before investor calls; VC interview simulation predic",
+          "type": "weak_assumption",
+          "confidence": "Low",
+          "question": "What fast 2-week experiment can you run to test and de-risk this assumption?",
+          "traceability": "Founder Stated Assumption"
+        }
+      ],
+      "risks": [
+        "Moat vulnerability: Incumbents could replicate core feature rapidly.",
+        "Founder assumption needs validation experiment: \"Founders will spend 20+ minutes pressure-testing pitches before invest...\""
+      ]
+    }
+  },
+  "simulations": {}
+}

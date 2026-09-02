@@ -1,0 +1,15 @@
+{
+  "name": "ai-startup-pitch-coach",
+  "version": "1.0.0",
+  "description": "Full Stack AI Startup Pitch Coach with Auth, Startup Workspace, Assumption Ledger, Deck Builder & Investor Simulator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

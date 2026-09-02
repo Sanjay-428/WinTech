@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Startup Pitch Coach - Pressure Test & Investor Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <!-- ================= LOGIN MODAL OVERLAY ================= -->
+  <div id="login-modal" class="login-overlay">
+    <div class="login-card">
+      <div class="login-brand">
+        <div class="logo-icon">🎯</div>
+        <span>PitchPulse AI</span>
+      </div>
+      <p class="login-subtitle">AI Startup Pitch Pressure-Tester & Investor Simulator</p>
+      
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-user">Username</label>
+          <input type="text" id="login-user" class="form-control" placeholder="Enter any username (e.g. founder)" required>
+        </div>
+        <div class="form-group">
+          <label for="login-pass">Password</label>
+          <input type="password" id="login-pass" class="form-control" placeholder="Enter any password" required>
+        </div>
+        
+        <button type="submit" class="btn btn-primary btn-block" style="padding:14px;">
+          🚀 Sign In / Launch Workspace
+        </button>
+      </form>
+      
+      <div class="login-notice">
+        💡 <strong>Flexible Auth Enabled:</strong> You can enter <u>ANY</u> username and password to log in and create your startup workspace session!
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN APP CONTAINER ================= -->
+  <div class="app-container">
+
+    <!-- NAVBAR HEADER -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <div class="logo-icon">🎯</div>
+        <div class="brand-title">AI Pitch <span>Coach</span></div>
+      </div>
+      
+      <div class="user-profile-badge">
+        <div class="user-info">
+          <div id="nav-username" class="user-name">Guest Founder</div>
+          <div class="user-role">PRO Founder Workspace</div>
+        </div>
+        <div id="nav-avatar" class="user-avatar">F</div>
+        <button id="btn-logout" class="btn btn-secondary" style="padding: 6px 12px; font-size:12px;" title="Switch User">Logout</button>
+      </div>
+    </header>
+
+    <!-- NAVIGATION TABS -->
+    <div class="tabs-header">
+      <button class="tab-btn active" data-tab="tab-workspace">
+        📝 1. Startup Workspace
+      </button>
+      <button class="tab-btn" data-tab="tab-ledger">
+        ⚖️ 2. Fact vs Assumption Ledger
+      </button>
+      <button class="tab-btn" data-tab="tab-outline">
+        📊 3. Pitch Deck Outline
+      </button>
+      <button class="tab-btn" data-tab="tab-simulator">
+        🦈 4. Investor Q&A Simulator
+      </button>
+      <button class="tab-btn" data-tab="tab-traceability">
+        🔗 5. Fact Traceability Matrix
+      </button>
+    </div>
+
+    <!-- ================= TAB 1: WORKSPACE RECORD ================= -->
+    <div id="tab-workspace" class="tab-content active">
+      
+      <!-- PRESET LOADER BAR -->
+      <div class="preset-bar">
+        <div class="preset-title">
+          <span>⚡ Quick Start Presets:</span>
+          <span>Load sample startup data to test instantly:</span>
+        </div>
+        <div class="preset-btns">
+          <button class="preset-chip" onclick="loadPreset('preset-saas')">🎯 PitchPulse AI (SaaS)</button>
+          <button class="preset-chip" onclick="loadPreset('preset-fintech')">💳 NovaShield (Fintech)</button>
+          <button class="preset-chip" onclick="loadPreset('preset-healthtech')">❤️ VitalFlow (Healthtech)</button>
+        </div>
+      </div>
+
+      <form id="pitch-form">
+        <div class="form-grid">
+          
+          <!-- Startup Name & Tagline -->
+          <div class="card" style="grid-column: 1 / -1;">
+            <div class="card-header">
+              <div class="card-title">🚀 Startup Identity</div>
+              <div class="card-desc">Basic company information</div>
+            </div>
+            <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 16px;">
+              <div class="form-group">
+                <label>Startup Name</label>
+                <input type="text" id="f-name" class="form-control" placeholder="e.g. PitchPulse AI" required>
+              </div>
+              <div class="form-group">
+                <label>One-Line Tagline / Hook</label>
+                <input type="text" id="f-tagline" class="form-control" placeholder="e.g. Pressure-testing founder pitches with real-time VC simulation">
+              </div>
+            </div>
+          </div>
+
+          <!-- Problem -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🔥 1. Problem & Friction</div>
+              <span class="badge badge-fact">Core Input</span>
+            </div>
+            <div class="form-group">
+              <label>What specific pain are you solving, and for whom?</label>
+              <textarea id="f-problem" class="form-control" placeholder="e.g. 90% of early stage founders fail pitching because they present unverified assumptions as facts..." required></textarea>
+            </div>
+          </div>
+
+          <!-- Customer -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🎯 2. Target Customer & ICP</div>
+              <span class="badge badge-fact">Core Input</span>
+            </div>
+            <div class="form-group">
+              <label>Who exactly is the paying customer or target market?</label>
+              <textarea id="f-customer" class="form-control" placeholder="e.g. Seed & Series-A startup founders, incubators, accelerators, and venture studios..." required></textarea>
+            </div>
+          </div>
+
+          <!-- Solution -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">⚡ 3. Solution & Product</div>
+              <span class="badge badge-fact">Core Input</span>
+            </div>
+            <div class="form-group">
+              <label>What have you built or plan to build? (Key features & workflow)</label>
+              <textarea id="f-solution" class="form-control" placeholder="e.g. An intelligent pitch coach that parses founder inputs, separates facts from weak assumptions..." required></textarea>
+            </div>
+          </div>
+
+          <!-- Differentiation -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">🛡️ 4. Differentiation & Moat</div>
+              <span class="badge badge-suggestion">Moat Claim</span>
+            </div>
+            <div class="form-group">
+              <label>Why won't a well-funded incumbent just copy this?</label>
+              <textarea id="f-diff" class="form-control" placeholder="e.g. Proprietary fact-vs-assumption ledgering, investor persona simulators, real-time response scoring..."></textarea>
+            </div>
+          </div>
+
+          <!-- Business Model -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">💰 5. Business Model & Monetization</div>
+              <span class="badge badge-suggestion">Monetization</span>
+            </div>
+            <div class="form-group">
+              <label>How does this startup generate revenue? (Pricing & tiers)</label>
+              <textarea id="f-biz" class="form-control" placeholder="e.g. B2B SaaS subscription ($49/mo Founder, $199/mo Accelerator) plus pay-per-use practice tokens..."></textarea>
+            </div>
+          </div>
+
+          <!-- Stated Assumptions -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title">⚠️ 6. Key Assumptions to Validate</div>
+              <span class="badge badge-weak">Unverified</span>
+            </div>
+            <div class="form-group">
+              <label>What unproven assumptions must be true for this to succeed?</label>
+              <textarea id="f-assumptions" class="form-control" placeholder="e.g. Founders will spend 20+ minutes pressure-testing pitches; VC interview simulation predicts success..."></textarea>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div style="margin-top: 24px; display: flex; gap: 16px; align-items: center; justify-content: flex-end;">
+          <button type="button" id="btn-save-profile" class="btn btn-secondary">💾 Save Draft</button>
+          <button type="submit" id="btn-analyze" class="btn btn-primary" style="padding: 14px 28px; font-size:16px;">
+            🔬 Pressure Test & Run AI Analysis →
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ================= TAB 2: FACT VS ASSUMPTION LEDGER ================= -->
+    <div id="tab-ledger" class="tab-content">
+      
+      <div class="ledger-summary-grid">
+        <div class="stat-card">
+          <div id="stat-score" class="stat-num score">0%</div>
+          <div class="stat-label">Pitch Readiness Score</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-facts" class="stat-num facts">0</div>
+          <div class="stat-label">Proven Facts</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-suggestions" class="stat-num suggestions">0</div>
+          <div class="stat-label">AI Suggestions</div>
+        </div>
+        <div class="stat-card">
+          <div id="stat-assumptions" class="stat-num assumptions">0</div>
+          <div class="stat-label">Weak Assumptions</div>
+        </div>
+      </div>
+
+      <!-- LEDGER TABLE CARD -->
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-header">
+          <div>
+            <div class="card-title">⚖️ Fact vs Assumption Classification Ledger</div>
+            <div class="card-desc">Systematic analysis distinguishing user-provided facts from AI-generated suggestions and weak assumptions needing proof.</div>
+          </div>
+          <button id="btn-reanalyze" class="btn btn-secondary" style="font-size:12px;">🔄 Re-Analyze Profile</button>
+        </div>
+
+        <div style="overflow-x:auto;">
+          <table class="ledger-table">
+            <thead>
+              <tr>
+                <th style="width: 140px;">Section</th>
+                <th style="width: 140px;">Classification</th>
+                <th>Claim / Statement</th>
+                <th>Targeted Investor Question</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-rows">
+              <tr>
+                <td colspan="4" style="text-align:center; color:var(--text-muted); padding:30px;">
+                  No analysis run yet. Fill in your Startup Workspace and click <strong>"Pressure Test & Run AI Analysis"</strong>!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- RISKS & FOUNDER VALIDATION CHECKLIST -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">🚨 Flagged Founder Risks & Validation Checklist</div>
+          <div class="card-desc">Critical unverified assumptions that must be validated through founder customer discovery interviews.</div>
+        </div>
+        <div id="risk-list-container">
+          <div style="color:var(--text-muted); font-style:italic;">Run analysis to generate risk checklist.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= TAB 3: PITCH DECK OUTLINE ================= -->
+    <div id="tab-outline" class="tab-content">
+      
+      <div class="deck-controls">
+        <div>
+          <h2 style="font-family:var(--font-heading); font-size:22px;">📊 Generated Investor Pitch Deck Outline</h2>
+          <p style="font-size:13px; color:var(--text-secondary);">8-slide narrative structure grounded directly in your startup context & facts.</p>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button id="btn-generate-deck" class="btn btn-secondary">⚡ Re-Generate Deck</button>
+          <button id="btn-copy-deck" class="btn btn-accent">📋 Copy Deck Markdown</button>
+        </div>
+      </div>
+
+      <div id="slides-container" class="slide-grid">
+        <div style="grid-column: 1 / -1; text-align:center; padding:40px; color:var(--text-muted);" class="card">
+          Click <strong>"Re-Generate Deck"</strong> or complete analysis to view your pitch deck slides!
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================= TAB 4: INVESTOR Q&A SIMULATOR ================= -->
+    <div id="tab-simulator" class="tab-content">
+      
+      <div class="sim-container">
+        
+        <!-- PERSONA SELECTION COLUMN -->
+        <div>
+          <h3 style="font-family:var(--font-heading); font-size:16px; margin-bottom:12px; color:var(--text-secondary);">
+            SELECT INVESTOR PERSONA:
+          </h3>
+
+          <div id="persona-skeptical" class="persona-select-card active" onclick="selectPersona('skeptical_vc')">
+            <div class="persona-header">
+              <div class="persona-avatar">🦈</div>
+              <div>
+                <div class="persona-name">Marcus Vance</div>
+                <div class="persona-role">Managing Partner, Benchmark</div>
+              </div>
+            </div>
+            <div class="persona-focus">Focus: Defensibility, LTV/CAC, Economics</div>
+          </div>
+
+          <div id="persona-tech" class="persona-select-card" onclick="selectPersona('tech_angel')">
+            <div class="persona-header">
+              <div class="persona-avatar">🔬</div>
+              <div>
+                <div class="persona-name">Dr. Aris Thorne</div>
+                <div class="persona-role">Deep Tech Angel & Ex-CTO</div>
+              </div>
+            </div>
+            <div class="persona-focus">Focus: Tech Architecture, IP & Moat</div>
+          </div>
+
+          <div id="persona-growth" class="persona-select-card" onclick="selectPersona('growth_investor')">
+            <div class="persona-header">
+              <div class="persona-avatar">📈</div>
+              <div>
+                <div class="persona-name">Elena Rostova</div>
+                <div class="persona-role">Growth Partner, Sequoia</div>
+              </div>
+            </div>
+            <div class="persona-focus">Focus: TAM, Go-To-Market, Scalability</div>
+          </div>
+        </div>
+
+        <!-- INTERACTIVE CHAT ROOM -->
+        <div class="chat-box">
+          
+          <div id="chat-messages" class="chat-messages">
+            <!-- Messages injected dynamically -->
+          </div>
+
+          <form id="chat-form" class="chat-input-bar">
+            <input type="text" id="chat-input" placeholder="Type your response to the investor..." required autocomplete="off">
+            <button type="submit" class="btn btn-primary">Send Pitch →</button>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ================= TAB 5: FACT TRACEABILITY MATRIX ================= -->
+    <div id="tab-traceability" class="tab-content">
+      
+      <div class="matrix-card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">🔗 Pitch Claim Traceability Matrix</div>
+            <div class="card-desc">Verifying that pitch narrative claims link directly back to known founder facts versus unverified assumptions.</div>
+          </div>
+        </div>
+
+        <div id="matrix-rows-container">
+          <div style="color:var(--text-muted); padding:20px; text-align:center;">
+            Complete your Startup Workspace profile to view the live traceability matrix.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
